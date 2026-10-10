@@ -1,0 +1,39 @@
+name: Update Data
+
+on:
+  schedule:
+    - cron: "17 * * * *"                     # every hour, all week (lines, flexed kickoffs, stats)
+    - cron: "5,20,35,50 16-23 * * 0,4,5,6"   # every 15 min, Thu/Fri/Sat/Sun afternoons and evenings (UTC)
+    - cron: "5,20,35,50 0-5 * * 0,1,2,5,6"   # every 15 min through late-night games (UTC)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch latest data
+        run: python scripts/fetch_data.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "data-bot"
+          git config user.email "actions@github.com"
+          git add data/data.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Update data $(date -u +'%Y-%m-%d %H:%M')"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push

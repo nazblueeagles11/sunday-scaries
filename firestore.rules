@@ -1,0 +1,28 @@
+rules_version = '2';
+
+// Sunday Scaries: signed-in players can see the league; each player can only
+// change their own name, picks and standings entry.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isMe(uid) { return signedIn() && request.auth.uid == uid; }
+
+    // display names (shared with the PL predictor if you use Jeet's project)
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow create, update: if isMe(uid);
+    }
+
+    // one document per player: {p: {gameId: {a, h}}, t}
+    match /nfl_picks/{uid} {
+      allow read: if signedIn();
+      allow create, update: if isMe(uid);
+    }
+
+    // Final Standings entries lock at the Week 6 kickoff, 15 Oct 2026, 8:15 PM ET
+    match /nfl_tables/{uid} {
+      allow read: if signedIn();
+      allow create, update: if isMe(uid) && request.time < timestamp.value(1792109700000);
+    }
+  }
+}

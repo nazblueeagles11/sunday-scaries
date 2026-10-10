@@ -1,7 +1,6 @@
 # Sunday Scaries · NFL Predictor
 
-Score predictions for the rest of the 2026 NFL season (Week 5 through the Super Bowl), in the spirit of
-[Devils in the Sky](https://thejeetness.github.io/pl-predictor/).
+Score predictions for the rest of the 2026 NFL season (Week 5 through the Super Bowl).
 
 - **Predictions:** pick the score of every game. Picks lock at kickoff, and everyone's picks show once a game is locked.
 - **Scoring:** 10 for an exact score · 5 for the right winner with the margin within 3 · 3 for the right winner · 0 otherwise.

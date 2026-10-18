@@ -471,8 +471,8 @@ let SEED = null;   // data/data.json, refreshed every few minutes
 /* ================================================================
    CONFIG
    ================================================================ */
-const FIRST_WEEK = 5;                                  // the site covers the rest of the season from here
-const STANDINGS_LOCK = "2026-10-16T00:15:00Z";         // Week 6 kickoff, Seahawks at Broncos (TNF)
+const FIRST_WEEK = 7;                                  // the site covers the rest of the season from here
+const STANDINGS_LOCK = "2026-10-23T00:15:00Z";         // Week 7 kickoff, Patriots at Bears (TNF)
 const DIVS = ["AFC East","AFC North","AFC South","AFC West","NFC East","NFC North","NFC South","NFC West"];
 const ROUND = {19:"Wild Card", 20:"Divisional", 21:"Conference", 22:"Super Bowl"};
 const INTL = {"Tottenham Hotspur Stadium":"London","Wembley Stadium":"London","Melbourne Cricket Ground":"Melbourne",
@@ -480,10 +480,10 @@ const INTL = {"Tottenham Hotspur Stadium":"London","Wembley Stadium":"London","M
 const MIN_TEAM_GAMES = 3;   // games of a club before a By Team cell is shaded
 const MIN_SHARE = 0.25;     // share of played games picked before a player counts as active
 const CHANGELOG = [
-  ["10 Oct 2026", [
-    "Site launched for Week 5 through Week 18, with playoff rounds added once they're set.",
+  ["18 Oct 2026", [
+    "Site launched for Week 7 through Week 18, with playoff rounds added once they're set.",
     "Score predictions lock at kickoff: 10 for an exact score, 5 for the right winner with the margin within 3, 3 for the right winner.",
-    "Final Standings game: put each division in order before the Week 6 kickoff on Thursday.",
+    "Final Standings game: put each division in order before the Week 7 kickoff on Thursday.",
     "Live scores during games, flexed kickoff times and betting lines refresh automatically."
   ]]
 ];
@@ -919,7 +919,7 @@ function renderStats(){
 
 /* ================================================================
    FINAL STANDINGS GAME
-   Order all eight divisions before the Week 6 kickoff.
+   Order all eight divisions before the Week 7 kickoff.
    Per team: 3 - |predicted - actual| (floor 0) · +3 division winner · +3 perfect division
    ================================================================ */
 const stLocked = () => Date.now() >= Date.parse(STANDINGS_LOCK);

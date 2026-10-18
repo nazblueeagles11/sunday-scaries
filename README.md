@@ -1,13 +1,13 @@
 # Sunday Scaries · NFL Predictor
 
-Score predictions for the rest of the 2026 NFL season (Week 5 through the Super Bowl).
+Score predictions for the rest of the 2026 NFL season (Week 7 through the Super Bowl).
 
 - **Predictions:** pick the score of every game. Picks lock at kickoff, and everyone's picks show once a game is locked.
 - **Scoring:** 10 for an exact score · 5 for the right winner with the margin within 3 · 3 for the right winner · 0 otherwise.
 - **Leaderboard:** season table with pick records, plus weekly winners.
 - **Live scores:** in-progress games show the score and clock, plus what your pick would earn if it ended now.
 - **Stats:** league leaders and a player to watch.
-- **Final Standings:** order all eight divisions before the Week 6 kickoff (Thu 15 Oct, 8:15 PM ET). 3 points per team minus places off, +3 for each division winner, +3 for each perfect division (max 144).
+- **Final Standings:** order all eight divisions before the Week 7 kickoff (Thu 22 Oct, 8:15 PM ET). 3 points per team minus places off, +3 for each division winner, +3 for each perfect division (max 144).
 - **By Team:** which clubs each player reads best.
 
 Schedule, flexed kickoff times, betting lines, standings and stats come from [nflverse](https://github.com/nflverse); live scores come from ESPN. A GitHub Action refreshes `data/data.json` every hour, and every 15 minutes during game windows.

@@ -19,10 +19,10 @@ service cloud.firestore {
       allow create, update: if isMe(uid);
     }
 
-    // Final Standings entries lock at the Week 6 kickoff, 15 Oct 2026, 8:15 PM ET
+    // Final Standings entries lock at the Week 7 kickoff, 22 Oct 2026, 8:15 PM ET
     match /nfl_tables/{uid} {
       allow read: if signedIn();
-      allow create, update: if isMe(uid) && request.time < timestamp.value(1792109700000);
+      allow create, update: if isMe(uid) && request.time < timestamp.value(1792714500000);
     }
   }
 }
